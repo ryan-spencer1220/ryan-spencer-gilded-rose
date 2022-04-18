@@ -262,4 +262,36 @@ describe("Gilded Rose", function () {
     expect(items[0].sellIn).toBe(-3);
     expect(items[0].quality).toBe(80);
   });
+
+  it("should reduce sellIin value by one quality value by 2", () => {
+    const gildedRose = new Shop([new Item("Conjured Mana Cake", 3, 6)]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].name).toBe("Conjured Mana Cake");
+    expect(items[0].sellIn).toBe(2);
+    expect(items[0].quality).toBe(4);
+  });
+
+  it("should reduce sellIin value by one", () => {
+    const gildedRose = new Shop([new Item("Conjured Mana Cake", 0, 0)]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].name).toBe("Conjured Mana Cake");
+    expect(items[0].sellIn).toBe(-1);
+    expect(items[0].quality).toBe(0);
+  });
+
+  it("should reduce sellIin value by one quality value by 2", () => {
+    const gildedRose = new Shop([new Item("Conjured Mana Cake", 5, 50)]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].name).toBe("Conjured Mana Cake");
+    expect(items[0].sellIn).toBe(4);
+    expect(items[0].quality).toBe(48);
+  });
+
+  it("should reduce sellIin value by one quality value by one", () => {
+    const gildedRose = new Shop([new Item("Conjured Mana Cake", 5, 1)]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].name).toBe("Conjured Mana Cake");
+    expect(items[0].sellIn).toBe(4);
+    expect(items[0].quality).toBe(0);
+  });
 });
